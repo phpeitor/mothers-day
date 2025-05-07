@@ -141,3 +141,7 @@ loop();
 let s = document.readyState;
 if (s === 'complete' || s === 'loaded' || s === 'interactive') init();
 else document.addEventListener('DOMContentLoaded', init, false);
+
+setTimeout(function() {
+  document.querySelector('.message').classList.add('visible');
+}, 3000);

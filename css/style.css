@@ -10,23 +10,34 @@ canvas {
 }
 
 .message {
-    font-family: 'Dancing Script', cursive;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    font-size: 2em;
-    font-family: 'Arial', sans-serif;
+    font-size: 2.4em;
+    font-family: 'Dancing Script', cursive;
     text-align: center;
     text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
     z-index: 10;
     pointer-events: none;
-    animation: pulse 2s infinite;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    will-change: opacity;
 }
 
-@keyframes pulse {
+.message.visible {
+    opacity: 1; 
+}
+
+@keyframes heartbeat {
     0% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.1); }
+    25% { transform: translate(-50%, -50%) scale(1.1); }
+    50% { transform: translate(-50%, -50%) scale(1); }
+    75% { transform: translate(-50%, -50%) scale(1.1); }
     100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.message.visible {
+    animation: heartbeat 1.5s infinite;
 }
