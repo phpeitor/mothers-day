@@ -138,10 +138,26 @@ let loop = function () {
 loop();
 };
 
+function toggleMessage() {
+  const message = document.querySelector('.message');
+  
+  setTimeout(() => {
+      message.classList.add('visible');
+      
+      setTimeout(() => {
+          message.classList.remove('visible');
+      }, 3000);
+      
+  }, 3000);
+}
+
+function startMessageLoop() {
+  toggleMessage(); 
+  setInterval(toggleMessage, 6000); 
+}
+
+setTimeout(startMessageLoop, 3000); 
+
 let s = document.readyState;
 if (s === 'complete' || s === 'loaded' || s === 'interactive') init();
 else document.addEventListener('DOMContentLoaded', init, false);
-
-setTimeout(function() {
-  document.querySelector('.message').classList.add('visible');
-}, 3000);

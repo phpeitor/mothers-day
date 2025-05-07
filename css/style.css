@@ -15,19 +15,19 @@ canvas {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    font-size: 2.4em;
+    font-size: 2.9em;
     font-family: 'Dancing Script', cursive;
     text-align: center;
     text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
     z-index: 10;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
-    will-change: opacity;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .message.visible {
-    opacity: 1; 
+    opacity: 1;
+    animation: heartbeat 1.5s infinite;
 }
 
 @keyframes heartbeat {
@@ -36,8 +36,4 @@ canvas {
     50% { transform: translate(-50%, -50%) scale(1); }
     75% { transform: translate(-50%, -50%) scale(1.1); }
     100% { transform: translate(-50%, -50%) scale(1); }
-}
-
-.message.visible {
-    animation: heartbeat 1.5s infinite;
 }
