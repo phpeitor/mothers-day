@@ -13,6 +13,6 @@
 ```
     .\index.html
 ```
-![Demo Git](https://wiesseconsultores.com/git_demo.gif)
+<img src="https://wiesseconsultores.com/demo.gif" alt="Demo Git" style="pointer-events: none;">
 
 *If you're interested in knowing the powerlevel configuration to get this prompt, have a look at [this gist](https://github.com/phpeitor/).*
