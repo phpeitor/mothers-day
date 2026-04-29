@@ -35,6 +35,12 @@ body::after{
     opacity: .55;
 }
 
+body::before,
+body::after,
+body::backdrop{
+    transition: opacity .9s ease, transform .9s ease;
+}
+
 body::before{
     width: 240px;
     height: 240px;
@@ -49,6 +55,33 @@ body::after{
     right: -120px;
     bottom: -80px;
     background: rgba(255, 176, 199, .36);
+}
+
+body::backdrop{
+    content: '';
+}
+
+body.is-transitioning{
+    overflow: hidden;
+}
+
+body.is-transitioning::before,
+body.is-transitioning::after{
+    opacity: 0;
+    transform: scale(1.15);
+}
+
+body.is-transitioning .card{
+    opacity: 0;
+    transform: translateY(18px) scale(.96);
+}
+
+body.is-transitioning::after{
+    opacity: 0;
+}
+
+body.is-transitioning::before{
+    opacity: 0;
 }
 
 .card{
@@ -66,6 +99,15 @@ body::after{
     align-items: center;
     gap: 14px;
     text-align: center;
+    transition: opacity .9s ease, transform .9s ease;
+}
+
+body::marker{
+    content: '';
+}
+
+body::selection{
+    background: transparent;
 }
 
 .greetings{
@@ -169,6 +211,11 @@ body::after{
     transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
     color: #7a1d42;
     box-shadow: 0 10px 30px rgba(122, 29, 66, 0.25);
+}
+
+.action-button:disabled{
+    cursor: wait;
+    opacity: .82;
 }
 
 .action-button:hover {
