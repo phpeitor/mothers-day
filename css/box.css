@@ -237,3 +237,104 @@ body::selection{
         border-radius: 22px;
     }
 }
+
+
+.logo{
+  position: absolute;
+    top: 14%;
+    left: 8%;
+    transform: rotate(-10deg);
+  z-index: 100;
+  width: 130px;
+  filter: drop-shadow(0 0 10px rgba(249, 143, 22, 0.75));
+  cursor: pointer;
+}
+
+.logo:before {
+  content: "";
+  display: block;
+  background: rgba(53, 51, 51, 0.15);
+  position: absolute;
+  top: -6px;
+  bottom: -6px;
+  left: -6px;
+  right: -6px;
+  border: 2px dashed rgba(227, 186, 232, 0.7);
+  border-radius: 8px;
+  z-index: 0;
+}
+
+.box {
+  background: #fff;
+  border-radius: 6px;
+  padding: 7px;
+  border: 2px solid rgba(227, 186, 232, 0.55);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.55),
+    0 0 18px rgba(180, 100, 210, 0.45);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s;
+}
+.box img {
+  width: 100%;
+}
+.box:hover {
+    transform: translate(4px, 4px) scale(1.02);
+}
+
+.logo-lightbox {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(6, 12, 30, 0.75);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.28s ease;
+    z-index: 1200;
+}
+
+.logo-lightbox--open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.logo-lightbox__img {
+    width: min(78vw, 560px);
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 26px rgba(255, 179, 107, 0.35);
+    transform: translate(var(--lbx), var(--lby)) scale(0.28) rotate(-12deg);
+    transition: transform 0.42s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.logo-lightbox--open .logo-lightbox__img {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+}
+
+.logo-lightbox--closing .logo-lightbox__img {
+    transform: translate(var(--lbx), var(--lby)) scale(0.28) rotate(-12deg);
+}
+
+.logo-lightbox__close {
+    position: fixed;
+    top: 18px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    font-size: 34px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.logo-lightbox__close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
