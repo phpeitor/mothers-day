@@ -18,7 +18,8 @@ body{
         radial-gradient(circle at bottom center, rgba(255, 155, 178, 0.32), transparent 30%),
         linear-gradient(160deg, #5b1937 0%, #8c2955 38%, #d46b7d 72%, #f5c7a6 100%);
     background-attachment: fixed;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     position: relative;
     padding: 24px;
 }
@@ -79,11 +80,11 @@ body::after{
 
 @keyframes glow{
     0%, 100%{
-        color: #fff;
-        text-shadow: 0 0 12px #00ff99, 0 0 50px #00ff99, 0 0 100px #00ff99;
+        color: #ffd6df;
+        text-shadow: 0 0 12px #ff4d6d, 0 0 36px #ff3b5f, 0 0 80px rgba(255, 61, 97, 0.7);
     }
     10%, 90%{
-        color: #696565;
+        color: #ff2f55;
         text-shadow: none;
     }
 }
@@ -105,23 +106,25 @@ body::after{
 }
 
 .description{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 20px;
 }
 
 @media screen and (max-width:574px){
     body{
-        padding: 16px;
+        padding: 14px;
     }
 
     .card{
-        padding: 24px 18px 22px;
-        border-radius: 24px;
+        width: min(94vw, 760px);
+        padding: 20px 16px 18px;
+        border-radius: 22px;
+        gap: 10px;
     }
 
     .greetings{
         display: block;
-        font-size: 3rem;
+        font-size: 2.6rem;
         font-weight: 500;
         text-align: center;
     }
@@ -129,7 +132,15 @@ body::after{
         font-size: 1rem;
     }
     
-    .button button{
+    .button-group{
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .action-button{
+        width: 100%;
+        max-width: 320px;
         font-size: .95rem;
     }
 }
@@ -140,7 +151,14 @@ body::after{
     max-width: 34rem;
 }
 
-.button button {
+.button-group{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.action-button {
     background: linear-gradient(135deg, #fff2c8 0%, #ffd2a1 52%, #ffb9cf 100%);
     border: none;
     padding: 12px 26px;
@@ -153,15 +171,22 @@ body::after{
     box-shadow: 0 10px 30px rgba(122, 29, 66, 0.25);
 }
 
-.button button:hover {
+.action-button:hover {
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 14px 34px rgba(122, 29, 66, 0.32);
 }
 
 .img {
-    width: min(74vw, 380px);
+    width: min(66vw, 320px);
     height: auto;
     border-radius: 28px;
     box-shadow: 0 18px 45px rgba(57, 11, 31, 0.28);
     object-fit: cover;
+}
+
+@media screen and (max-width:574px){
+    .img{
+        width: min(58vw, 240px);
+        border-radius: 22px;
+    }
 }

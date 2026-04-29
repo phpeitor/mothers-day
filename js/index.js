@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const image = document.querySelector('.img');
-  const button = document.getElementById('open-animation');
+  const buttons = document.querySelectorAll('[data-target]');
   const gifts = ['./img/caja1.gif', './img/caja2.gif', './img/caja3.gif'];
 
   if (image) {
@@ -8,9 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     image.src = randomGift;
   }
 
-  if (button) {
+  buttons.forEach((button) => {
     button.addEventListener('click', () => {
-      window.location.href = './animate-1';
+      const target = button.getAttribute('data-target');
+      if (target) {
+        window.location.href = target;
+      }
     });
-  }
+  });
 });
