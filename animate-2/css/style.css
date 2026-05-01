@@ -161,6 +161,7 @@ body {
   text-align: center;
   margin: 0 auto;
   margin-top: -3%;
+  font-size: 28px;
   animation: title 3s 1s ease infinite;
 }
 
