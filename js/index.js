@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const image = document.querySelector('.img');
     const buttons = document.querySelectorAll('[data-target]');
     const gifts = ['./img/caja1.gif', './img/caja2.gif', './img/caja3.gif'];
-    const transitionDelay = 400;
+    const transitionDelay = 1800;
 
     if (image) {
         const randomGift = gifts[Math.floor(Math.random() * gifts.length)];
@@ -10,20 +10,66 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-        const target = button.getAttribute('data-target');
-        if (target) {
-            document.body.classList.add('is-transitioning');
-            buttons.forEach((currentButton) => {
-            currentButton.disabled = true;
-            });
+        button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            button.style.setProperty('--x', ((e.clientX - rect.left) / rect.width * 100) + '%');
+            button.style.setProperty('--y', ((e.clientY - rect.top) / rect.height * 100) + '%');
+        });
 
-            setTimeout(() => {
-            window.location.href = target;
-            }, transitionDelay);
-        }
+        button.addEventListener('click', (e) => {
+            const rect = button.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+            ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+            button.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+
+            createParticles(e.clientX, e.clientY);
+
+            button.classList.add('is-clicked');
+
+            const target = button.getAttribute('data-target');
+            if (target) {
+                document.body.classList.add('is-transitioning');
+                buttons.forEach((currentButton) => {
+                    currentButton.disabled = true;
+                });
+
+                setTimeout(() => {
+                    window.location.href = target;
+                }, transitionDelay);
+            }
         });
     });
+
+    function createParticles(x, y) {
+        const colors = ['#ff85a1', '#fbbf24', '#ff6b9d', '#ffd2a1', '#ffb9cf', '#fff2c8', '#ff4d6d', '#f9a8d4'];
+        const particleCount = 28;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const angle = (360 / particleCount) * i + (Math.random() * 30 - 15);
+            const distance = 180 + Math.random() * Math.min(window.innerWidth, window.innerHeight) * 0.7;
+            const tx = Math.cos(angle * Math.PI / 180) * distance;
+            const ty = Math.sin(angle * Math.PI / 180) * distance;
+            particle.style.setProperty('--tx', tx + 'px');
+            particle.style.setProperty('--ty', ty + 'px');
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            const size = 6 + Math.random() * 12;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.animationDuration = (1.2 + Math.random() * 0.8) + 's';
+            particle.style.animationDelay = (Math.random() * 0.15) + 's';
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 2200);
+        }
+    }
 
     // ===================== Logo Lightbox =====================
     (function () {
