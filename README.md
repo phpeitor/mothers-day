@@ -4,7 +4,9 @@
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://www.linkedin.com/in/drphp/)
 
 [![Video](https://img.youtube.com/vi/aXiFG7v8-EU/0.jpg)](https://www.youtube.com/watch?v=aXiFG7v8-EU)  
-🎥[Ver demo](https://www.youtube.com/watch?v=PXzVrNyMUN8)
+
+[![Video Demo](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=aXiFG7v8-EU)
+
 
 ## 🎁 Descripción
 
@@ -47,7 +49,7 @@ Landing page interactiva para el Día de la Madre con animaciones modernas, efec
 
 1. **Clona el repositorio**
    ```bash
-   git clone [URL_del_repositorio]
+   git clone https://github.com/phpeitor/mothers-day.git
    cd mothers-day
    ```
 
