@@ -74,10 +74,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createHeartTransition(x, y) {
         const heart = document.createElement('img');
-        const farthestX = Math.max(x, window.innerWidth - x);
-        const farthestY = Math.max(y, window.innerHeight - y);
-        const requiredRadius = Math.hypot(farthestX, farthestY);
-        const scale = Math.ceil(requiredRadius / 56) + 4;
+        const card = document.querySelector('.card');
+        const rect = card ? card.getBoundingClientRect() : document.body.getBoundingClientRect();
+        const corners = [
+            [rect.left, rect.top],
+            [rect.right, rect.top],
+            [rect.left, rect.bottom],
+            [rect.right, rect.bottom]
+        ];
+        const requiredRadius = Math.max(...corners.map(([cornerX, cornerY]) => Math.hypot(cornerX - x, cornerY - y)));
+        const scale = Math.max(3.4, requiredRadius / 46);
 
         heart.className = 'heart-transition';
         heart.src = './img/corazon.svg';
