@@ -3,6 +3,7 @@ linktr.ee/mabelolivera10
 */
 
 @import url("./fonts.css?family=Gaegu");
+
 .about {
   position: fixed;
   z-index: 10;
@@ -85,7 +86,7 @@ body {
   align-items: center;
   transition: all 1s 0.2s ease;
   opacity: 1;
-  
+
 }
 
 .heart:hover {
@@ -107,12 +108,14 @@ body {
     height: 120px;
     transition: all 1s 0.2s ease;
   }
+
   100% {
     width: 140px;
     height: 140px;
     transition: all 1s 0.2s ease;
   }
 }
+
 /* elements that compose the heart */
 .heart:before,
 .heart:after {
@@ -166,16 +169,24 @@ body {
 }
 
 @keyframes title {
-  0%, 25%, 100% {
+
+  0%,
+  25%,
+  100% {
     transform: rotate(0deg);
   }
-  5%, 15% {
+
+  5%,
+  15% {
     transform: rotate(5deg);
   }
-  10%, 20% {
+
+  10%,
+  20% {
     transform: rotate(-5deg);
   }
 }
+
 /* active state that hide the title */
 .heart.active .title {
   opacity: 0;
@@ -247,9 +258,11 @@ body {
     top: 60%;
     transform: rotate(0deg);
   }
+
   50% {
     top: 30%;
   }
+
   100% {
     width: 50px;
     height: 50px;
@@ -258,6 +271,7 @@ body {
     transform: rotate(-40deg);
   }
 }
+
 @keyframes floatHearts2 {
   0% {
     width: 20px;
@@ -266,6 +280,7 @@ body {
     top: 60%;
     transform: rotate(0deg);
   }
+
   100% {
     width: 100px;
     height: 100px;
@@ -274,6 +289,7 @@ body {
     transform: rotate(40deg);
   }
 }
+
 @keyframes floatHearts3 {
   0% {
     width: 20px;
@@ -282,9 +298,11 @@ body {
     top: 50%;
     transform: rotate(0deg);
   }
+
   50% {
     top: 100%;
   }
+
   100% {
     width: 80px;
     height: 80px;
@@ -293,6 +311,7 @@ body {
     transform: rotate(90deg);
   }
 }
+
 .heart2:before,
 .heart2:after,
 .heart3:before,
@@ -321,4 +340,42 @@ body {
   transform: rotate(45deg);
   border-radius: 400px 400px 100px 0px;
   right: 10%;
+}
+
+#btn_home {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#btn_home:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#btn_reload {
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
