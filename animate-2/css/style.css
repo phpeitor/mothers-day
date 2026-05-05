@@ -363,6 +363,54 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+#btn_home::after,
+#btn_reload::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-6px);
+  background: rgba(35, 12, 20, 0.92);
+  color: #fff;
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-family: "Gaegu", cursive;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+}
+
+#btn_home::before,
+#btn_reload::before {
+  content: '';
+  position: absolute;
+  left: calc(100% + 4px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-6px);
+  border: 6px solid transparent;
+  border-right-color: rgba(35, 12, 20, 0.92);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+#btn_home:hover::after,
+#btn_home:focus-visible::after,
+#btn_reload:hover::after,
+#btn_reload:focus-visible::after,
+#btn_home:hover::before,
+#btn_home:focus-visible::before,
+#btn_reload:hover::before,
+#btn_reload:focus-visible::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
 #btn_reload {
   position: absolute;
   top: 50px;
@@ -370,12 +418,17 @@ body {
   z-index: 9999;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(5px);
+  border: 0;
+  outline: 0;
+  appearance: none;
+  -webkit-appearance: none;
   padding: 10px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  cursor: pointer;
   transition: transform 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
