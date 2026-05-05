@@ -79,61 +79,38 @@ body.is-transitioning::after{
 
 .heart-transition {
     position: fixed;
-    width: 86px;
-    height: 86px;
+    width: 124px;
+    height: 124px;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%) rotate(-45deg) scale(0);
+    display: block;
+    object-fit: contain;
+    transform: translate(-50%, -50%) scale(0);
     transform-origin: center;
-    background:
-        radial-gradient(circle at 34% 34%, rgba(255, 255, 255, 0.95), transparent 0 12%, transparent 13%),
-        linear-gradient(135deg, #ff477e 0%, #ff85a1 45%, #ffc2d1 100%);
-    box-shadow:
-        0 0 34px rgba(255, 133, 161, 0.75),
-        0 0 90px rgba(255, 71, 126, 0.55);
+    filter:
+        drop-shadow(0 0 26px rgba(255, 133, 161, 0.8))
+        drop-shadow(0 0 84px rgba(255, 71, 126, 0.55));
     pointer-events: none;
     z-index: 1000;
     animation: heartTransition 1.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.heart-transition::before,
-.heart-transition::after {
-    content: '';
-    position: absolute;
-    width: 86px;
-    height: 86px;
-    border-radius: 50%;
-    background: inherit;
-}
-
-.heart-transition::before {
-    top: -43px;
-    left: 0;
-}
-
-.heart-transition::after {
-    top: 0;
-    left: 43px;
-}
-
 @keyframes heartTransition {
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%) rotate(-45deg) scale(0);
-        filter: blur(0);
+        transform: translate(-50%, -50%) scale(0);
     }
     16% {
         opacity: 1;
-        transform: translate(-50%, -50%) rotate(-45deg) scale(1.15);
+        transform: translate(-50%, -50%) scale(1.15);
     }
     44% {
         opacity: 1;
-        transform: translate(-50%, -50%) rotate(-45deg) scale(0.92);
+        transform: translate(-50%, -50%) scale(0.92);
     }
     100% {
         opacity: 1;
-        transform: translate(-50%, -50%) rotate(-45deg) scale(34);
-        filter: blur(1px);
+        transform: translate(-50%, -50%) scale(var(--heart-scale, 34));
     }
 }
 

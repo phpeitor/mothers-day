@@ -73,10 +73,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function createHeartTransition(x, y) {
-        const heart = document.createElement('div');
+        const heart = document.createElement('img');
+        const farthestX = Math.max(x, window.innerWidth - x);
+        const farthestY = Math.max(y, window.innerHeight - y);
+        const requiredRadius = Math.hypot(farthestX, farthestY);
+        const scale = Math.ceil(requiredRadius / 56) + 4;
+
         heart.className = 'heart-transition';
+        heart.src = './img/corazon.svg';
+        heart.alt = '';
+        heart.setAttribute('aria-hidden', 'true');
         heart.style.left = x + 'px';
         heart.style.top = y + 'px';
+        heart.style.setProperty('--heart-scale', scale);
         document.body.appendChild(heart);
         setTimeout(() => heart.remove(), transitionDelay + 200);
     }
