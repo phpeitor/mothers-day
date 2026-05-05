@@ -65,24 +65,6 @@ body.is-transitioning{
     overflow: hidden;
 }
 
-body.is-transitioning::before{
-    content: '';
-    position: fixed;
-    inset: 0;
-    width: auto;
-    height: auto;
-    border-radius: 0;
-    left: 0;
-    top: 0;
-    background: radial-gradient(circle at center, rgba(255, 186, 207, 0.85), rgba(91, 25, 55, 0.95));
-    opacity: 1;
-    transform: scale(0);
-    animation: morphOverlay 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
-    filter: blur(0);
-    pointer-events: none;
-    z-index: 1000;
-}
-
 body.is-transitioning::after{
     opacity: 0;
     transform: scale(1.15);
@@ -93,6 +75,66 @@ body.is-transitioning::after{
     0% { transform: scale(0); opacity: 0.8; }
     60% { transform: scale(1.2); opacity: 1; }
     100% { transform: scale(1); opacity: 1; }
+}
+
+.heart-transition {
+    position: fixed;
+    width: 86px;
+    height: 86px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg) scale(0);
+    transform-origin: center;
+    background:
+        radial-gradient(circle at 34% 34%, rgba(255, 255, 255, 0.95), transparent 0 12%, transparent 13%),
+        linear-gradient(135deg, #ff477e 0%, #ff85a1 45%, #ffc2d1 100%);
+    box-shadow:
+        0 0 34px rgba(255, 133, 161, 0.75),
+        0 0 90px rgba(255, 71, 126, 0.55);
+    pointer-events: none;
+    z-index: 1000;
+    animation: heartTransition 1.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.heart-transition::before,
+.heart-transition::after {
+    content: '';
+    position: absolute;
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    background: inherit;
+}
+
+.heart-transition::before {
+    top: -43px;
+    left: 0;
+}
+
+.heart-transition::after {
+    top: 0;
+    left: 43px;
+}
+
+@keyframes heartTransition {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(-45deg) scale(0);
+        filter: blur(0);
+    }
+    16% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(-45deg) scale(1.15);
+    }
+    44% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(-45deg) scale(0.92);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(-45deg) scale(34);
+        filter: blur(1px);
+    }
 }
 
 body.is-transitioning .card{
@@ -131,14 +173,6 @@ body.is-transitioning .logo{
     opacity: 0;
     transform: rotate(-10deg) scale(0.8);
     transition: opacity .4s ease, transform .4s ease;
-}
-
-body.is-transitioning::after{
-    opacity: 0;
-}
-
-body.is-transitioning::before{
-    opacity: 0;
 }
 
 .card{

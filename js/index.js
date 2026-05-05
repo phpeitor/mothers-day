@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = button.getAttribute('data-target');
             if (target) {
                 document.body.classList.add('is-transitioning');
+                createHeartTransition(e.clientX, e.clientY);
                 buttons.forEach((currentButton) => {
                     currentButton.disabled = true;
                 });
@@ -69,6 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.appendChild(particle);
             setTimeout(() => particle.remove(), 2200);
         }
+    }
+
+    function createHeartTransition(x, y) {
+        const heart = document.createElement('div');
+        heart.className = 'heart-transition';
+        heart.style.left = x + 'px';
+        heart.style.top = y + 'px';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), transitionDelay + 200);
     }
 
     // ===================== Logo Lightbox =====================
