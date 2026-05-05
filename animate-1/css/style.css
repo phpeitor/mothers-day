@@ -72,3 +72,44 @@ canvas {
 #btn_home:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
+
+#btn_home::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%) translateX(-6px);
+    background: rgba(35, 12, 20, 0.92);
+    color: #fff;
+    padding: 7px 10px;
+    border-radius: 999px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 18px;
+    line-height: 1;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+}
+
+#btn_home::before {
+    content: '';
+    position: absolute;
+    left: calc(100% + 4px);
+    top: 50%;
+    transform: translateY(-50%) translateX(-6px);
+    border: 6px solid transparent;
+    border-right-color: rgba(35, 12, 20, 0.92);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+#btn_home:hover::after,
+#btn_home:focus-visible::after,
+#btn_home:hover::before,
+#btn_home:focus-visible::before {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
