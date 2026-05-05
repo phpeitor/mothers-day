@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='75'>🎁</text></svg>" />
-    <link rel="stylesheet" href="./css/box.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='75'>🎁</text></svg>" />
+    <link rel="stylesheet" href="./css/box.css?v=1.0">
     <title>Happy Mother's Day</title>
 </head>
+
 <body>
     <div class="logo">
         <div class="box">
@@ -29,10 +32,15 @@
             <span>Guardo algo especial para ti, espero te guste!</span>
         </div>
         <div class="button-group">
-            <button class="action-button" type="button" data-target="./animate-1">Animate 1</button>
-            <button class="action-button" type="button" data-target="./animate-2">Animate 2</button>
+            <button class="action-button" type="button" data-target="./animate-1" aria-label="Abrir sorpresa"><span
+                    class="action-icon" aria-hidden="true">🎁</span><span class="action-tooltip">Abrir
+                    sorpresa</span></button>
+            <button class="action-button" type="button" data-target="./animate-2" aria-label="Abrir sorpresa"><span
+                    class="action-icon" aria-hidden="true">💝</span><span class="action-tooltip">Abrir
+                    sorpresa</span></button>
         </div>
     </main>
     <script src="./js/index.js"></script>
 </body>
+
 </html>

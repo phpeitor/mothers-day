@@ -245,7 +245,7 @@ body::selection{
     transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
     color: #7a1d42;
     box-shadow: 0 10px 30px rgba(122, 29, 66, 0.25);
-    overflow: hidden;
+    overflow: visible;
     z-index: 1;
 }
 
@@ -297,6 +297,37 @@ body::selection{
 .action-button.is-clicked::after {
     opacity: 1;
     animation: shimmer 1s ease infinite;
+}
+
+.action-icon {
+    position: relative;
+    z-index: 1;
+}
+
+.action-tooltip {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 12px);
+    transform: translateX(-50%) translateY(6px);
+    min-width: max-content;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(74, 12, 36, 0.92);
+    color: #fff8ee;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    opacity: 0;
+    box-shadow: 0 10px 24px rgba(65, 13, 34, 0.28);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.action-button:hover .action-tooltip,
+.action-button:focus-visible .action-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 @keyframes shimmer {
