@@ -95,6 +95,24 @@ body.is-transitioning::after{
     animation: heartTransition 1.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+.rose-transition {
+    position: fixed;
+    width: 132px;
+    height: 132px;
+    left: 50%;
+    top: 50%;
+    display: block;
+    object-fit: contain;
+    transform: translate(-50%, -50%) scale(0.2) rotate(-10deg);
+    transform-origin: center;
+    filter:
+        drop-shadow(0 0 24px rgba(255, 185, 207, 0.82))
+        drop-shadow(0 0 78px rgba(255, 75, 118, 0.48));
+    pointer-events: none;
+    z-index: 1000;
+    animation: roseFadeIn 1.75s ease-out forwards;
+}
+
 @keyframes heartTransition {
     0% {
         opacity: 0;
@@ -115,6 +133,25 @@ body.is-transitioning::after{
     100% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(var(--heart-scale, 34));
+    }
+}
+
+@keyframes roseFadeIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -42%) scale(0.2) rotate(-10deg);
+    }
+    22% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.95) rotate(3deg);
+    }
+    58% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.84) rotate(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(var(--heart-scale, 34)) rotate(0deg);
     }
 }
 
@@ -247,6 +284,16 @@ body::selection{
     box-shadow: 0 10px 30px rgba(122, 29, 66, 0.25);
     overflow: visible;
     z-index: 1;
+    opacity: 0;
+    animation: actionButtonFadeIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.action-button:nth-child(1) {
+    animation-delay: 0.18s;
+}
+
+.action-button:nth-child(2) {
+    animation-delay: 0.32s;
 }
 
 .action-button::before {
@@ -335,6 +382,24 @@ body::selection{
     50% { background-position: 100% 50%; }
 }
 
+@keyframes actionButtonFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(14px) scale(0.96);
+        filter: blur(6px);
+    }
+    65% {
+        opacity: 1;
+        transform: translateY(-1px) scale(1.01);
+        filter: blur(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
 @keyframes buttonPop {
     0% { transform: scale(1); box-shadow: 0 10px 30px rgba(122, 29, 66, 0.25); }
     30% { transform: scale(1.08); box-shadow: 0 15px 40px rgba(122, 29, 66, 0.45); }
@@ -386,6 +451,13 @@ body::selection{
 .action-button:hover:not(:active) {
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 14px 34px rgba(122, 29, 66, 0.32);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .action-button {
+        opacity: 1;
+        animation: none;
+    }
 }
 
 .img {

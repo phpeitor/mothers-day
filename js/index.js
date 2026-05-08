@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = button.getAttribute('data-target');
             if (target) {
                 document.body.classList.add('is-transitioning');
-                createHeartTransition(e.clientX, e.clientY);
+                createHeartTransition(e.clientX, e.clientY, button);
                 buttons.forEach((currentButton) => {
                     currentButton.disabled = true;
                 });
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function createHeartTransition(x, y) {
+    function createHeartTransition(x, y, button) {
         const heart = document.createElement('img');
         const card = document.querySelector('.card');
         const rect = card ? card.getBoundingClientRect() : document.body.getBoundingClientRect();
@@ -85,8 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const requiredRadius = Math.max(...corners.map(([cornerX, cornerY]) => Math.hypot(cornerX - x, cornerY - y)));
         const scale = Math.max(3.4, requiredRadius / 46);
 
-        heart.className = 'heart-transition';
-        heart.src = './img/corazon.svg';
+        heart.className = button.getAttribute('data-transition-class') || 'heart-transition';
+        heart.src = button.getAttribute('data-transition-image') || './img/corazon.svg';
         heart.alt = '';
         heart.setAttribute('aria-hidden', 'true');
         heart.style.left = x + 'px';
